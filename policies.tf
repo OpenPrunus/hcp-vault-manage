@@ -4,13 +4,13 @@ resource "vault_policy" "admin_policy" {
   policy        = file("policies/admin-policy.hcl")
 }
 
-# # Create an admins policy in the admin/staging namespace
-resource "vault_policy" "admin_policy_staging" {
-  namespace     = vault_namespace.staging.path
-  depends_on    = [vault_namespace.staging]
-  name          = "admins"
-  policy        = file("policies/admin-policy.hcl")
-}
+# Create an admins policy in the admin/staging namespace
+#resource "vault_policy" "admin_policy_staging" {
+#  namespace     = vault_namespace.staging.path
+#  depends_on    = [vault_namespace.staging]
+# name          = "admins"
+#  policy        = file("policies/admin-policy.hcl")
+#}
 
 # # Create an admins policy in the admin/staging/project1 namespace
 resource "vault_policy" "admin_policy_project1" {
