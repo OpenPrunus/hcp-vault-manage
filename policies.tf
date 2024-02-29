@@ -5,20 +5,20 @@ resource "vault_policy" "admin_policy" {
 }
 
 # Create an admins policy in the admin/staging namespace
-#resource "vault_policy" "admin_policy_staging" {
-#  namespace     = vault_namespace.staging.path
-#  depends_on    = [vault_namespace.staging]
-# name          = "admins"
-#  policy        = file("policies/admin-policy.hcl")
-#}
+resource "vault_policy" "admin_policy_staging" {
+ namespace     = vault_namespace.staging.path
+ depends_on    = [vault_namespace.staging]
+name          = "admins"
+ policy        = file("policies/admin-policy.hcl")
+}
 
-# # Create an admins policy in the admin/staging/project1 namespace
-#resource "vault_policy" "admin_policy_project1" {
-#  namespace     = vault_namespace.project1.path_fq
-#  depends_on    = [vault_namespace.project1]
-#  name          = "admins"
-#  policy        = file("policies/admin-policy.hcl")
-#}
+# Create an admins policy in the admin/staging/project1 namespace
+resource "vault_policy" "admin_policy_project1" {
+ namespace     = vault_namespace.project1.path_fq
+ depends_on    = [vault_namespace.project1]
+ name          = "admins"
+ policy        = file("policies/admin-policy.hcl")
+}
 
 resource "vault_policy" "boundary-policy" {
   name = "boundary-policy"
